@@ -68,18 +68,26 @@
     for (let someSign in datas){
       let displaySign = datas[someSign]
       
-      const currentSign = document.getElementsByTagName("h1")
-      currentSign.innerHTML = "<h1>displaySign.signe</h1>"
+      // const currentSign = document.getElementsByTagName(`<h1>`)
+      const currentSign = document.getElementById("daySign")
+      currentSign.innerHTML = `<h1>${displaySign.signe.toUpperCase()}</h1>`
 
       const currentPeriod = document.getElementById("date")
-      currentPeriod.innerHTML = displaySign.date
+      currentPeriod.innerHTML = `<span>DU ${displaySign.date.toUpperCase()}</span>`
       
       const today = document.getElementById("datejour")
       let todaysDate = new Date()
-      today.innerHTML = todaysDate.getDate()
+      let year = todaysDate.getFullYear()
+      let month = todaysDate.getMonth() + 1
+      let day = todaysDate.getDate()
+      let computedDate = day.toString().padStart(2, '0') + '/' + month.toString().padStart(2, '0') + '/' + year
+
+      today.innerHTML = `<p>-- HOROSCOPE DU ${computedDate}</p>`
+      // today.innerHTML = `<p>-- HOROSCOPE DU ${todaysDate.getDate()} + ${today.getMonth()} + ${today.getFullYear()}</p>`
+      // <p id="datejour">-- HOROSCOPE DU 28/09/2023</p>
       
       const love = document.getElementById("amour")
-      love.innerHTML = displaySign.amour
+      love.insertAdjacentHTML(beforeEnd, `<p><span>Amour :</span>${displaySign.amour}</p>`)
 
       const work = document.getElementById("travail")
       love.innerHTML = displaySign.travail
@@ -96,9 +104,9 @@
       const advice = document.getElementById("conseil")
       advice.innerHTML = displaySign.conseil
 
-      const picture = document.getElementById("image")
-      picture.innerHTML =  <img src="img/displaySign.image">
+      const picture = document.getElementById("image") // .src
+      picture.src = `img/${displaySign.image}`//setAttribute('src', `img/${displaySign.image}`);
      }
     };
 
-    displaySign()
+displaySign()
