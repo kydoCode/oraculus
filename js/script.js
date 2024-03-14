@@ -1,5 +1,26 @@
     console.log("Script linked")
-    
+
+      // Récupération des valeurs du DOM
+      // const currentSign = document.getElementById("daySign")
+      const currentSign = document.getElementsByTagName(`<h1>`)
+      const currentPeriod = document.getElementById("date")
+      const today = document.getElementById("datejour")
+      const love = document.getElementById("amour")
+      const work = document.getElementById("travail")
+      const money = document.getElementById("argent")
+      const health = document.getElementById("sante")
+      const family = document.getElementById("famille")
+      const advice = document.getElementById("conseil")
+      const picture = document.getElementById("image").src
+
+      
+       // Date du jour
+       let todaysDate = new Date()
+       let year = todaysDate.getFullYear()
+       let month = todaysDate.getMonth() + 1
+       let day = todaysDate.getDate()
+       let computedDate = day.toString().padStart(2, '0') + '/' + month.toString().padStart(2, '0') + '/' + year
+
     let datas = [
     {
     "id": 1,
@@ -64,49 +85,27 @@
     ]
 
     function displaySign() {
-      // code
-    for (let someSign in datas){
-      let displaySign = datas[someSign]
-      
-      // const currentSign = document.getElementsByTagName(`<h1>`)
-      const currentSign = document.getElementById("daySign")
-      currentSign.innerHTML = `<h1>${displaySign.signe.toUpperCase()}</h1>`
-
-      const currentPeriod = document.getElementById("date")
-      currentPeriod.innerHTML = `<span>DU ${displaySign.date.toUpperCase()}</span>`
-      
-      const today = document.getElementById("datejour")
-      let todaysDate = new Date()
-      let year = todaysDate.getFullYear()
-      let month = todaysDate.getMonth() + 1
-      let day = todaysDate.getDate()
-      let computedDate = day.toString().padStart(2, '0') + '/' + month.toString().padStart(2, '0') + '/' + year
-
+    for (let i = 0; i < datas.length; i++){
+      let displaySign = datas[i]
+    /* for (let someSign in datas){
+      let displaySign = datas[someSign] */
+      // Ecriture du DOM avec les valeurs
+      /// Date du jour
       today.innerHTML = `<p>-- HOROSCOPE DU ${computedDate}</p>`
-      // today.innerHTML = `<p>-- HOROSCOPE DU ${todaysDate.getDate()} + ${today.getMonth()} + ${today.getFullYear()}</p>`
-      // <p id="datejour">-- HOROSCOPE DU 28/09/2023</p>
-      
-      const love = document.getElementById("amour")
-      love.insertAdjacentHTML(beforeEnd, `<p><span>Amour :</span>${displaySign.amour}</p>`)
 
-      const work = document.getElementById("travail")
-      love.innerHTML = displaySign.travail
-
-      const money = document.getElementById("argent")
-      love.innerHTML = displaySign.argent
-
-      const health = document.getElementById("sante")
-      love.innerHTML = displaySign.sante
-
-      const family = document.getElementById("famille")
-      love.innerHTML = displaySign.famille
-
-      const advice = document.getElementById("conseil")
-      advice.innerHTML = displaySign.conseil
-
-      const picture = document.getElementById("image") // .src
-      picture.src = `img/${displaySign.image}`//setAttribute('src', `img/${displaySign.image}`);
+      /// Données textes et image 
+      currentSign.textContent = displaySign[i].signe.toUpperCase() // <h1>${displaySign[i].signe.toUpperCase()}</h1>`
+      currentPeriod.textContent = `DU ${displaySign[i].date.toUpperCase()}`
+      love.innerHTML = `<p><span>Amour :</span>${displaySign[i].amour}</p>`
+      work.innerHTML = `<p><span>Travail :</span>${displaySign[i].travail}</p>`
+      money.innerHTML = `<p><span>Travail :</span>${displaySign[i].argent}</p>`
+      health.innerHTML = `<p><span>Travail :</span>${displaySign[i].sante}</p>` 
+      family.innerHTML = `<p><span>Travail :</span>${displaySign[i].famille}</p>` 
+      advice.innerHTML = `<p><span>Travail :</span>${displaySign[i].conseil}</p>`
+      picture.src = displaySign.image //setAttribute('src', `img/${displaySign.image}`);
      }
     };
+
+  
 
 displaySign()
