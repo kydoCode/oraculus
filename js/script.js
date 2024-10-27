@@ -13,6 +13,7 @@ const advice = document.getElementById("conseil");
 const picture = document.getElementById("horoscope-image");
 const rightArrow = document.querySelector(".arrow-right");
 const leftArrow = document.querySelector(".arrow-left");
+const horoscopeLinks = document.querySelectorAll('.horoscope-link'); // Assuming these have a common class
 
 // Données locales de secours
 const localDatas = [
@@ -40,8 +41,7 @@ function todaysTheDay() {
   const year = todaysDate.getFullYear();
   const month = (todaysDate.getMonth() + 1).toString().padStart(2, '0');
   const day = todaysDate.getDate().toString().padStart(2, '0');
-  const computedDate = `${day}/${month}/${year}`;
-  today.innerHTML = `<p>-- HOROSCOPE DU ${computedDate}</p>`;
+  today.innerHTML = `<p>-- HOROSCOPE DU ${day}/${month}/${year}</p>`;
 }
 
 // Fonction d'affichage du signe
@@ -56,6 +56,19 @@ function displaySign(index) {
   family.innerHTML = `<p><span>Famille et amis : </span>${sign.famille}</p>`;
   advice.innerHTML = `<p><span>Conseil : </span>${sign.conseil}</p>`;
   picture.src = sign.image;
+}
+
+// Déterminer l'index du signe actuel basé sur la date
+function getCurrentSignIndex() {
+  const todaysDate = new Date();
+  for (let i = 0; i < datas.length; i++) {
+    const sign = datas[i];
+    const [start, end] = sign.date.split(' au ').map(date => new Date(`${date} 2023`)); // Assumes year 2023
+    if (start <= todaysDate && todaysDate <= end) {
+      return i;
+    }
+  }
+  return 0; // Default to first sign if nothing matches
 }
 
 // Récupération asynchrone des données JSON avec fallback
@@ -74,6 +87,7 @@ async function fetchHoroscopeData() {
 async function initialize() {
   datas = await fetchHoroscopeData();
   todaysTheDay();
+  currentIndex = getCurrentSignIndex();
   displaySign(currentIndex);
 
   // Gestion des événements pour la navigation entre les signes
@@ -85,6 +99,15 @@ async function initialize() {
   leftArrow.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + datas.length) % datas.length;
     displaySign(currentIndex);
+  });
+
+  // Gestion des événements pour les liens d'horoscope
+  horoscopeLinks.forEach((link, index) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      currentIndex = index;
+      displaySign(currentIndex);
+    });
   });
 }
 
