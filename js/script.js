@@ -98,36 +98,104 @@ allIndexes.push(sign.id)
 console.log('Clé valeurs:', someSign[0])
 console.log('Indexes:', allIndexes)
 /// Peuplage
-function displaySign(sign) {
-currentSign.innerHTML = sign.signe.toUpperCase()
-currentPeriod.innerHTML = `DU ${sign.date.toUpperCase()}`
-love.innerHTML = `<p><span>Amour : </span>${sign.amour}</p>`
-work.innerHTML = `<p><span>Travail : </span>${sign.travail}</p>`
-money.innerHTML = `<p><span>Argent : </span>${sign.argent}</p>`
-health.innerHTML = `<p><span>Santé : </span>${sign.sante}</p>` 
-family.innerHTML = `<p><span>Famille et amis : </span>${sign.famille}</p>` 
-advice.innerHTML = `<p><span>Conseil : </span>${sign.conseil}</p>`
-picture.src = sign.image
+console.log("Script linked");
+
+// Get DOM elements
+const currentSign = document.getElementById("horoscope-sign");
+const currentPeriod = document.getElementById("horoscope-period");
+const todayElem = document.getElementById("horoscope-day-time");
+const love = document.getElementById("amour");
+const work = document.getElementById("travail");
+const money = document.getElementById("argent");
+const health = document.getElementById("sante");
+const family = document.getElementById("famille");
+const advice = document.getElementById("conseil");
+const picture = document.getElementById("horoscope-image");
+const rightArrow = document.querySelector(".arrow-right");
+const leftArrow = document.querySelector(".arrow-left");
+
+// Horoscope data
+let datas = [
+    {
+        "id": 1,
+        "signe": "Bélier",
+        "date": "21 mars au 19 avril",
+        "amour": "Ce mois-ci, l'amour sera au rendez-vous pour les Béliers...",
+        "travail": "Dans le domaine professionnel...",
+        "argent": "En ce qui concerne vos finances...",
+        "sante": "Ce mois-ci, accordez une attention particulière...",
+        "famille": "Votre famille et vos amis seront une source...",
+        "conseil": "Ce mois-ci, rappelez-vous que la patience...",
+        "image": "./img/belier.png"
+    },
+    // More signs...
+];
+
+let currentIndex = 0;
+
+// Display current date
+function todaysTheDay() {
+    const todaysDate = new Date();
+    const year = todaysDate.getFullYear();
+    const month = (todaysDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = todaysDate.getDate().toString().padStart(2, '0');
+    todayElem.innerHTML = `<p>-- HOROSCOPE DU ${day}/${month}/${year}</p>`;
 }
 
-// Fetch data from json/horoscope.json
+// Update the HTML content with the horoscope data
+function displaySign(index) {
+    const sign = datas[index];
+    currentSign.innerHTML = sign.signe.toUpperCase();
+    currentPeriod.innerHTML = `DU ${sign.date.toUpperCase()}`;
+    love.innerHTML = `<p><span>Amour : </span>${sign.amour}</p>`;
+    work.innerHTML = `<p><span>Travail : </span>${sign.travail}</p>`;
+    money.innerHTML = `<p><span>Argent : </span>${sign.argent}</p>`;
+    health.innerHTML = `<p><span>Santé : </span>${sign.sante}</p>`;
+    family.innerHTML = `<p><span>Famille et amis : </span>${sign.famille}</p>`;
+    advice.innerHTML = `<p><span>Conseil : </span>${sign.conseil}</p>`;
+    picture.src = sign.image;
+}
+
+// Fetch data from JSON or use fallback
 async function fetchHoroscopeData() {
-try {
-const response = await fetch('json/horoscope.json');
-const data = await response.json();
-return data;
-} catch (error) {
-console.error('Error fetching horoscope data:', error);
-return [];
-}
+    try {
+        const response = await fetch('json/horoscope.json');
+        if (!response.ok) throw new Error('Network response was not ok');
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching horoscope data, using fallback:', error);
+        return datas;
+    }
 }
 
-// Call the fetch function on page load and pass the data to displaySign
-window.addEventListener('load', async () => {
-const horoscopeData = await fetchHoroscopeData();
-if (horoscopeData.length > 0) {
-displaySign(horoscopeData[0]); // Display the first sign as an example
+// Setup page and event listeners
+function setupHoroscopePage() {
+    todaysTheDay();
+    displaySign(currentIndex);
+
+    rightArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % datas.length;
+        displaySign(currentIndex);
+    });
+
+    leftArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + datas.length) % datas.length;
+        displaySign(currentIndex);
+    });
+
+    document.querySelectorAll('.horoscope-link').forEach((link, index) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            currentIndex = index;
+            displaySign(currentIndex);
+        });
+    });
 }
+
+// Initialize the page on load
+window.addEventListener('load', async () => {
+    datas = await fetchHoroscopeData();
+    setupHoroscopePage();
 });
 
 todaysTheDay(today)
