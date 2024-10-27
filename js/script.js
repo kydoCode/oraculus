@@ -60,3 +60,54 @@ let datas = [
       "image": "./img/capricorne.png"
     }
   ]
+
+document.addEventListener('DOMContentLoaded', function() {
+    const horoscopeLinks = document.querySelectorAll('.horoscope-link');
+    const arrowLeft = document.getElementById('arrow-left');
+    const arrowRight = document.getElementById('arrow-right');
+
+    horoscopeLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const sign = link.textContent.trim().split(' ')[0];
+            updateHoroscope(sign);
+        });
+    });
+
+    arrowLeft.addEventListener('click', function(event) {
+        event.preventDefault();
+        navigateHoroscope('left');
+    });
+
+    arrowRight.addEventListener('click', function(event) {
+        event.preventDefault();
+        navigateHoroscope('right');
+    });
+
+    function updateHoroscope(sign) {
+        const horoscope = datas.find(data => data.signe.toLowerCase() === sign.toLowerCase());
+        if (horoscope) {
+            document.querySelector('h1').textContent = horoscope.signe;
+            document.getElementById('date').textContent = `DU ${horoscope.date.toUpperCase()}`;
+            document.getElementById('amour').innerHTML = `<span>Amour :</span> ${horoscope.amour}`;
+            document.getElementById('travail').innerHTML = `<span>Travail :</span> ${horoscope.travail}`;
+            document.getElementById('argent').innerHTML = `<span>Argent :</span> ${horoscope.argent}`;
+            document.getElementById('sante').innerHTML = `<span>Santé :</span> ${horoscope.sante}`;
+            document.getElementById('famille').innerHTML = `<span>Famille et amis :</span> ${horoscope.famille}`;
+            document.getElementById('conseil').innerHTML = `<span>Conseil :</span> ${horoscope.conseil}`;
+            document.querySelector('aside img').src = horoscope.image;
+        }
+    }
+
+    function navigateHoroscope(direction) {
+        const currentSign = document.querySelector('h1').textContent.trim();
+        const currentIndex = datas.findIndex(data => data.signe.toLowerCase() === currentSign.toLowerCase());
+        let newIndex;
+        if (direction === 'left') {
+            newIndex = (currentIndex - 1 + datas.length) % datas.length;
+        } else if (direction === 'right') {
+            newIndex = (currentIndex + 1) % datas.length;
+        }
+        updateHoroscope(datas[newIndex].signe);
+    }
+});
