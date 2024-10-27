@@ -51,7 +51,7 @@ const localDatas = [
       "sante": "Les Gémeaux devraient maintenir leur énergie...",
       "famille": "La famille et les amis apporteront un soutien précieux...",
       "conseil": "La patience est essentielle pour prendre des décisions...",
-      "image": "./img/gemeaux.png"
+      "image": "./img/gemeaux.webp"
     },
     {
       "id": 4,
@@ -75,7 +75,7 @@ const localDatas = [
       "sante": "Accordez une attention particulière à votre santé...",
       "famille": "La famille sera un refuge et une source de soutien...",
       "conseil": "La patience et la persévérance seront vos alliées...",
-      "image": "./img/lion.png"
+      "image": "./img/lion.webp"
     },
     {
       "id": 6,
@@ -161,7 +161,7 @@ const localDatas = [
       "conseil": "Restez à l’écoute de vos émotions...",
       "image": "./img/poissons.png"
     }
-];
+  ];
 
 let datas = [];
 let currentIndex = 0;
@@ -196,14 +196,13 @@ function getCurrentSignIndex() {
 
   for (let i = 0; i < datas.length; i++) {
     const sign = datas[i];
-    let [startDay, startMonth] = sign.date.split(' au ')[0].split(' ');
-    let [endDay, endMonth] = sign.date.split(' au ')[1].split(' ');
+    const [startDay, startMonth] = sign.date.split(' au ')[0].split(' ');
+    const [endDay, endMonth] = sign.date.split(' au ')[1].split(' ');
 
-    // Adjust for date parsing
     let startDate = new Date(`${currentYear}-${getMonthNumber(startMonth)}-${startDay}`);
     let endDate = new Date(`${currentYear}-${getMonthNumber(endMonth)}-${endDay}`);
 
-    // Adjust for zodiac signs that span across years (like Capricorn)
+    // Adjust for year wrap (e.g., Capricorn)
     if (endDate < startDate) {
       endDate.setFullYear(endDate.getFullYear() + 1);
     }
@@ -212,19 +211,18 @@ function getCurrentSignIndex() {
       return i;
     }
   }
-  return 0; // Default to first sign
+  return 0; // Default to first sign if no match
 }
 
 // Helper function to map month names to numbers
 function getMonthNumber(monthName) {
-  const months = {
+  return {
     "janvier": "01", "février": "02", "mars": "03", "avril": "04", "mai": "05", "juin": "06",
     "juillet": "07", "août": "08", "septembre": "09", "octobre": "10", "novembre": "11", "décembre": "12"
-  };
-  return months[monthName.toLowerCase()];
+  }[monthName.toLowerCase()];
 }
 
-// Asynchronous data fetching with a fallback
+// Asynchronous data fetching with local fallback
 async function fetchHoroscopeData() {
   try {
     const response = await fetch('json/horoscope.json');
@@ -243,7 +241,6 @@ async function initialize() {
   currentIndex = getCurrentSignIndex();
   displaySign(currentIndex);
 
-  // Arrow navigation handling
   rightArrow.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % datas.length;
     displaySign(currentIndex);
@@ -254,7 +251,6 @@ async function initialize() {
     displaySign(currentIndex);
   });
 
-  // Horoscope link navigation handling
   horoscopeLinks.forEach((link, index) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();

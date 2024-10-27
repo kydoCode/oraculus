@@ -33,7 +33,7 @@
     "sante": "Les Gémeaux devraient maintenir leur énergie...",
     "famille": "La famille et les amis apporteront un soutien précieux...",
     "conseil": "La patience est essentielle pour prendre des décisions...",
-    "image": "./img/gemeaux.png"
+    "image": "./img/gemeaux.webp"
   },
   {
     "id": 4,
@@ -57,7 +57,7 @@
     "sante": "Accordez une attention particulière à votre santé...",
     "famille": "La famille sera un refuge et une source de soutien...",
     "conseil": "La patience et la persévérance seront vos alliées...",
-    "image": "./img/lion.png"
+    "image": "./img/lion.webp"
   },
   {
     "id": 6,
