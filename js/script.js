@@ -203,13 +203,13 @@ function getCurrentSignIndex() {
     let endDate = new Date(`${currentYear}-${getMonthNumber(endMonth)}-${endDay}`);
 
     // Adjust for year wrap (e.g., Capricorn)
-    // if (endDate < startDate) {
-    //   endDate.setFullYear(endDate.getFullYear() + 1);
-    // }
+    if (endDate < startDate) {
+      endDate.setFullYear(endDate.getFullYear() + 1);
+    }
 
-    // if (startDate <= today && today <= endDate) {
-    //   return i;
-    // }
+    if (startDate <= today && today <= endDate) {
+      return i;
+    }
   }
   return 0; // Default to first sign if no match
 }
