@@ -141,3 +141,12 @@ article div p {
 article div p span {
     color:#3F3F3F;
 }
+
+#horoscope-image {
+    width: 100%;
+    height: auto;
+    max-width: 300px; /* or any preferred max width */
+    object-fit: contain; /* or cover depending on how you want to display */
+    display: block;
+    margin: 0 auto; /* center the image */
+}

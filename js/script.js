@@ -242,13 +242,16 @@ async function initialize() {
   displaySign(currentIndex);
 
   rightArrow.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % datas.length;
-    displaySign(currentIndex);
-  });
+// Arrow navigation handling
+rightArrow.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % datas.length;
+  displaySign(currentIndex);
+});
 
-  leftArrow.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + datas.length) % datas.length;
-    displaySign(currentIndex);
+leftArrow.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + datas.length) % datas.length;
+  displaySign(currentIndex);
+});
   });
 
   horoscopeLinks.forEach((link, index) => {
