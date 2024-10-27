@@ -203,13 +203,13 @@ function getCurrentSignIndex() {
     let endDate = new Date(`${currentYear}-${getMonthNumber(endMonth)}-${endDay}`);
 
     // Adjust for year wrap (e.g., Capricorn)
-    if (endDate < startDate) {
-      endDate.setFullYear(endDate.getFullYear() + 1);
-    }
+    // if (endDate < startDate) {
+    //   endDate.setFullYear(endDate.getFullYear() + 1);
+    // }
 
-    if (startDate <= today && today <= endDate) {
-      return i;
-    }
+    // if (startDate <= today && today <= endDate) {
+    //   return i;
+    // }
   }
   return 0; // Default to first sign if no match
 }
@@ -230,7 +230,7 @@ async function fetchHoroscopeData() {
     return await response.json();
   } catch (error) {
     console.error('Error fetching horoscope data, using fallback:', error);
-    return localDatas;
+    // return localDatas;
   }
 }
 
@@ -241,7 +241,7 @@ async function initialize() {
   currentIndex = getCurrentSignIndex();
   displaySign(currentIndex);
 
-  rightArrow.addEventListener('click', () => {
+  
 // Arrow navigation handling
 rightArrow.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % datas.length;
@@ -252,14 +252,14 @@ leftArrow.addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + datas.length) % datas.length;
   displaySign(currentIndex);
 });
-  });
 
-  horoscopeLinks.forEach((link, index) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      currentIndex = index;
-      displaySign(currentIndex);
-    });
+
+horoscopeLinks.forEach((link, index) => {
+link.addEventListener('click', (event) => {
+    event.preventDefault();
+    currentIndex = index;
+    displaySign(currentIndex);
+});
   });
 }
 
