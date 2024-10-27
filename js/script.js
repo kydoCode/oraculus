@@ -14,6 +14,8 @@ const picture = document.getElementById("horoscope-image");
 const rightArrow = document.querySelector(".arrow-right");
 const leftArrow = document.querySelector(".arrow-left");
 const horoscopeLinks = document.querySelectorAll('.horoscope-link');
+const upperLeftLink = document.getElementById("upper-left-link");
+const upperRightLink = document.getElementById("upper-right-link");
 
 let datas = [];
 let currentIndex = 0;
@@ -39,6 +41,16 @@ function displaySign(index) {
   family.innerHTML = `<p><span>Famille et amis : </span>${sign.famille}</p>`;
   advice.innerHTML = `<p><span>Conseil : </span>${sign.conseil}</p>`;
   picture.src = sign.image;
+  updateHoroscopeLinks(index); // Update the horoscope links
+}
+
+// Update the 'upper-left-link' and 'upper-right-link' elements based on the n-1 n+1 logic
+function updateHoroscopeLinks(index) {
+  const leftIndex = (index - 1 + datas.length) % datas.length;
+  const rightIndex = (index + 1) % datas.length;
+
+  upperLeftLink.innerHTML = `${datas[leftIndex].signe} <span>${datas[leftIndex].date.toUpperCase()}</span>`;
+  upperRightLink.innerHTML = `${datas[rightIndex].signe} <span>${datas[rightIndex].date.toUpperCase()}</span>`;
 }
 
 // Determine the current sign index based on today's date
@@ -92,16 +104,19 @@ async function initialize() {
   todaysTheDay();
   currentIndex = getCurrentSignIndex();
   displaySign(currentIndex);
+  updateHoroscopeLinks(currentIndex); // Update the horoscope links when the page loads
 
   // Arrow navigation handling
   rightArrow.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % datas.length;
     displaySign(currentIndex);
+    updateHoroscopeLinks(currentIndex); // Update the horoscope links after updating the current sign
   });
 
   leftArrow.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + datas.length) % datas.length;
     displaySign(currentIndex);
+    updateHoroscopeLinks(currentIndex); // Update the horoscope links after updating the current sign
   });
 
   horoscopeLinks.forEach((link) => {
@@ -109,6 +124,7 @@ async function initialize() {
       event.preventDefault();
       currentIndex = parseInt(link.getAttribute('data-index'));
       displaySign(currentIndex);
+      updateHoroscopeLinks(currentIndex); // Update the horoscope links after updating the current sign
     });
   });
 }
