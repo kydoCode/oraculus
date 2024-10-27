@@ -143,9 +143,11 @@ article div p span {
 }
 
 #horoscope-image {
+    border-radius: 20px;
+    max-width: 200px;
     width: 100%;
     height: auto;
-    max-width: 300px; /* or any preferred max width */
+    /* max-width: 300px; */ /* or any preferred max width */
     object-fit: contain; /* or cover depending on how you want to display */
     display: block;
     margin: 0 auto; /* center the image */
