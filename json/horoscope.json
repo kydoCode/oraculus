@@ -21,7 +21,7 @@
   "sante": "Prenez soin de votre santé en adoptant une routine équilibrée. Le stress pourrait affecter votre bien-être, alors accordez-vous des moments de détente et de relaxation. Une activité physique régulière et une alimentation saine vous aideront à maintenir votre énergie et votre vitalité.",
   "famille": "Votre famille sera un soutien fort durant cette période. Les liens familiaux se renforceront à travers des moments de partage et de complicité. C'est aussi le moment idéal pour résoudre d'éventuels conflits et rétablir l'harmonie au sein de votre foyer.",
   "conseil": "Gardez un équilibre entre prudence et audace. Votre nature stable est un atout, mais n'ayez pas peur de sortir de votre zone de confort de temps en temps. Les expériences nouvelles pourraient vous apporter des perspectives enrichissantes et stimulantes.",
-  "image": "./img/taureau.png"
+  "image": "./img/taureau_correct.png"
   },
   {
   "id": 3,
@@ -93,7 +93,7 @@
     "sante": "Restez attentif à votre bien-être mental et émotionnel. Les Scorpions sont souvent sensibles aux fluctuations émotionnelles, alors n'hésitez pas à prendre du temps pour vous ressourcer. La méditation ou des activités créatives peuvent vous aider à canaliser vos émotions de manière positive.",
     "famille": "Les relations familiales seront harmonieuses ce mois-ci. Profitez de ces moments pour renforcer vos liens avec vos proches et partager des expériences significatives ensemble. Une discussion ouverte pourrait également aider à résoudre d'anciens malentendus.",
     "conseil": "La prudence est de mise dans vos décisions, surtout lorsque vous êtes confronté à des choix difficiles. Prenez le temps d'analyser toutes les options avant d'agir, car cela vous évitera des regrets futurs. Faites confiance à votre instinct tout en restant rationnel.",
-    "image": "./img/scorpion.png"
+    "image": "./img/scorpion_correct.png"
   },
   {
     "id": 9,
@@ -105,7 +105,7 @@
     "sante": "Prenez soin de votre forme physique en intégrant une activité régulière dans votre routine quotidienne. L'exercice sera essentiel pour maintenir votre énergie élevée et réduire le stress accumulé. N'oubliez pas également d'accorder une attention particulière à votre santé mentale.",
     "famille": "La famille offrira un soutien moral important durant cette période d'aventures personnelles et professionnelles. Profitez-en pour partager vos projets avec eux et solliciter leurs conseils avisés. Une sortie familiale pourrait renforcer ces liens précieux.",
     "conseil": "Évitez les décisions impulsives qui pourraient avoir des conséquences durables sur votre vie personnelle ou professionnelle. Prenez le temps d'évaluer chaque situation avant d'agir, car cela vous permettra d'éviter des erreurs regrettables.",
-    "image": "./img/sagittaire.png"
+    "image": "./img/sagittaire_correct.png"
   },
   {
     "id": 10,
@@ -129,7 +129,7 @@
     "sante": "Priorisez le bien-être mental en intégrant des activités relaxantes dans votre routine quotidienne, comme la méditation ou la lecture inspirante. Le stress peut s'accumuler rapidement, alors assurez-vous de prendre du temps pour vous détendre régulièrement afin de maintenir un bon équilibre émotionnel.",
     "famille": "Votre famille sera une source de sérénité durant cette période mouvementée. Profitez-en pour passer du temps ensemble, échanger des idées et partager des expériences enrichissantes qui renforceront vos liens familiaux déjà solides.",
     "conseil": "Exprimez-vous librement et avec authenticité dans toutes vos interactions sociales ce mois-ci. Votre originalité est une force; n'hésitez pas à partager vos pensées uniques avec ceux qui vous entourent, car cela pourrait inspirer ceux qui sont prêts à écouter.",
-    "image": "./img/verseau.png"
+    "image": "./img/verseau_correct.png"
   },
   {
     "id": 12,
@@ -141,6 +141,6 @@
     "sante": "Prenez soin de votre bien-être émotionnel en accordant une attention particulière à vos besoins intérieurs; cela peut inclure la méditation ou l'écriture dans un journal personnel pour exprimer vos pensées et émotions librement sans jugement.",
     "famille": "Les Poissons profiteront de moments chaleureux passés avec leur famille ce mois-ci; ces interactions renforceront leurs liens affectifs déjà solides et créeront un environnement propice aux échanges sincères et authentiques entre proches.",
     "conseil": "'Restez à l’écoute de vos émotions', car elles sont souvent le meilleur guide que vous puissiez avoir dans la prise de décisions importantes cette période-ci; faites confiance à votre intuition tout en restant ouvert aux conseils avisés que peuvent offrir ceux qui vous entourent.",
-    "image": "./img/poissons.png"
+    "image": "./img/poissons_correct.png"
   }
 ]
