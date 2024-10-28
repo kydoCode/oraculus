@@ -27,8 +27,9 @@ function todaysTheDay() {
   const month = (todaysDate.getMonth() + 1).toString().padStart(2, '0');
   const day = todaysDate.getDate().toString().padStart(2, '0');
   today.innerHTML = `<p>-- HOROSCOPE DU ${day}/${month}/${year}</p>`;
+}
 
-  // Function to check if an image is found and returns the placeholder if not
+// Function to check if an image is found and returns the placeholder if not
 function getValidImageSrc(src, placeholder = './img/placeholder.webp') {
   const img = new Image();
   img.src = src;
