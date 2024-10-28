@@ -28,9 +28,8 @@ function todaysTheDay() {
   const day = todaysDate.getDate().toString().padStart(2, '0');
   today.innerHTML = `<p>-- HOROSCOPE DU ${day}/${month}/${year}</p>`;
 }
-
 // Function to check if an image is found and returns the placeholder if not
-function getValidImageSrc(src, placeholder = './img/placeholder.webp') {
+function getValidImageSrc(src, placeholder = 'img/placeholder_sign.webp') {
   const img = new Image();
   img.src = src;
 
@@ -40,7 +39,7 @@ function getValidImageSrc(src, placeholder = './img/placeholder.webp') {
   });
 }
 
-// Modify displaySign to use getValidImageSrc and await for the image to load
+// Modify displaySign to use getValidImageSrc
 async function displaySign(index) {
   const sign = datas[index];
   currentSign.innerHTML = sign.signe.toUpperCase();
@@ -94,8 +93,9 @@ function getCurrentSignIndex() {
 // Helper function to map month names to numbers
 function getMonthNumber(monthName) {
   return {
-    "janvier": "01", "février": "02", "mars": "04", "avril": "04", "mai": "05", "juin": "06",
-    "juillet": "07", "août": "08", "septembre": "09", "octobre": "10", "novembre": "11", "décembre": "12"
+    "janvier": "01", "février": "02", "mars": "03", "avril": "04", "mai": "05", 
+    "juin": "06", "juillet": "07", "août": "08", "septembre": "09",
+    "octobre": "10", "novembre": "11", "décembre": "12"
   }[monthName.toLowerCase()];
 }
 
