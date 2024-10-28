@@ -144,5 +144,3 @@ async function initialize() {
 
 // Load the script when the page is ready
 window.addEventListener('load', initialize);
-
-// it's okay
