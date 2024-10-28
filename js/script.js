@@ -94,7 +94,7 @@ function getCurrentSignIndex() {
 // Helper function to map month names to numbers
 function getMonthNumber(monthName) {
   return {
-    "janvier": "01", "février": "02", "mars": "03", "avril": "04", "mai": "05", "juin": "06",
+    "janvier": "01", "février": "02", "mars": "04", "avril": "04", "mai": "05", "juin": "06",
     "juillet": "07", "août": "08", "septembre": "09", "octobre": "10", "novembre": "11", "décembre": "12"
   }[monthName.toLowerCase()];
 }
@@ -144,3 +144,5 @@ async function initialize() {
 
 // Load the script when the page is ready
 window.addEventListener('load', initialize);
+
+// it's okay
