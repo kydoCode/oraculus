@@ -27,10 +27,20 @@ function todaysTheDay() {
   const month = (todaysDate.getMonth() + 1).toString().padStart(2, '0');
   const day = todaysDate.getDate().toString().padStart(2, '0');
   today.innerHTML = `<p>-- HOROSCOPE DU ${day}/${month}/${year}</p>`;
+
+  // Function to check if an image is found and returns the placeholder if not
+function getValidImageSrc(src, placeholder = './img/placeholder.webp') {
+  const img = new Image();
+  img.src = src;
+
+  return new Promise((resolve) => {
+    img.onload = () => resolve(src);
+    img.onerror = () => resolve(placeholder);
+  });
 }
 
-// Display a sign based on index
-function displaySign(index) {
+// Modify displaySign to use getValidImageSrc and await for the image to load
+async function displaySign(index) {
   const sign = datas[index];
   currentSign.innerHTML = sign.signe.toUpperCase();
   currentPeriod.innerHTML = `DU ${sign.date.toUpperCase()}`;
@@ -40,7 +50,9 @@ function displaySign(index) {
   health.innerHTML = `<p><span>Santé : </span>${sign.sante}</p>`;
   family.innerHTML = `<p><span>Famille et amis : </span>${sign.famille}</p>`;
   advice.innerHTML = `<p><span>Conseil : </span>${sign.conseil}</p>`;
-  picture.src = sign.image;
+  
+  // Use getValidImageSrc to set the image source
+  picture.src = await getValidImageSrc(sign.image);
   updateHoroscopeLinks(index); // Update the horoscope links
 }
 
