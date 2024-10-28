@@ -69,7 +69,7 @@
   "sante": "Restez attentif à votre santé mentale et physique. Le stress du quotidien pourrait affecter votre bien-être, alors n'hésitez pas à prendre du temps pour vous relaxer et vous ressourcer. Une routine de méditation ou de yoga pourrait vous aider à maintenir votre équilibre intérieur.",
   "famille": "La famille sera un pilier de soutien et de stabilité pour les Vierges. Profitez de cette période pour renforcer vos liens familiaux et peut-être même pour organiser des réunions ou des activités en commun. Votre présence attentionnée et votre sens pratique seront grandement appréciés par vos proches.",
   "conseil": "Évitez de vous précipiter dans vos décisions et apprenez à lâcher prise sur les petits détails. Votre perfectionnisme est une force, mais il peut parfois vous empêcher de voir la vue d'ensemble. Faites confiance à votre intuition et n'ayez pas peur de prendre des risques calculés pour votre croissance personnelle.",
-  "image": "./img/vierge.png"
+  "image": "./img/vierge.webp"
   },
   {
   "id": 7,
@@ -81,7 +81,7 @@
   "sante": "Prenez soin de votre bien-être en vous reposant suffisamment et en maintenant une routine équilibrée. Le stress pourrait se faire sentir, alors accordez-vous des moments de détente et de plaisir. Une activité physique régulière, comme la danse ou le yoga, pourrait vous aider à relâcher la pression et à retrouver votre équilibre intérieur.",
   "famille": "La famille apportera du réconfort et un soutien précieux ce mois-ci. Profitez de ces moments pour renforcer vos liens familiaux et partager des expériences significatives. Une sortie en famille ou un dîner convivial pourrait raviver l'harmonie au sein de votre foyer.",
   "conseil": "L’équilibre est la clé dans tous les domaines de votre vie. Apprenez à dire non lorsque cela est nécessaire et à établir des limites saines. Cela vous permettra de mieux gérer votre temps et votre énergie, tout en préservant vos relations personnelles et professionnelles.",
-  "image": "./img/balance.png"
+  "image": "./img/balance.webp"
   },
   {
     "id": 8,
